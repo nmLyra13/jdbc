@@ -13,8 +13,6 @@ public class Program {
 		PreparedStatement st = null;
 		try {
 			conn = DB.getConnection();
-		}
-		
-		
+		}		
 	}
 }
