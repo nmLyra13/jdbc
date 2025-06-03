@@ -20,8 +20,8 @@ public class Program {
 					+ "SET BaseSalary = BaseSalary + ? " 
 					+ "WHERE " 
 					+ "(DepartmentId = ?)");
-			st.setDouble(1, 2000.0);
-			st.setInt(2, 2);
+			st.setDouble(1, 525.11);
+			st.setInt(2, 4);
 			int rowsAffected = st.executeUpdate();
 
 			System.out.println("Done! Rows Affected: " + rowsAffected);
