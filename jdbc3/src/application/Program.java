@@ -2,10 +2,12 @@ package application;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+
 import db.DB;
 
 public class Program {
@@ -34,7 +36,15 @@ public class Program {
 			st.setInt(5, 4);
 			
 			int rowsAffected = st.executeUpdate();
-			System.out.println("Done! Rows affected: " + rowsAffected);
+			// System.out.println("Done! Rows affected: " + rowsAffected);
+			
+			if (rowsAffected > 0) {
+				 ResultSet rs = st.getGeneratedKeys();
+				 // Warning: The st.getGeneratedKeys() function returns a resultSet.
+
+			} else {
+				 System.out.println("No rown affected!");
+			}
 			
 		}
 		catch (SQLException e) {
@@ -48,8 +58,13 @@ public class Program {
 		}
 	}
 
+	private static void If(boolean b) {
+		// TODO Auto-generated method stub
+
+	}
+
 	private static void printStackTrace() {
-		
+
 	}
 
 	private static SimpleDateFormat SimpleDateFormat(String string) {
