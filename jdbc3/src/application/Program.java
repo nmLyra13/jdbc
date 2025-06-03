@@ -3,6 +3,7 @@ package application;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import db.DB;
@@ -24,7 +25,8 @@ public class Program {
 			st = conn.prepareStatement("INSERT INTO seller "
 					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
 					+ "VALUES "
-					+ "(?, ?, ?, ?, ?)");
+					+ "(?, ?, ?, ?, ?)"
+					+ Statement.RETURN_GENERATED_KEYS);
 			st.setString(1, "Nelivaldo Lyra");
 			st.setString(2, "nmlyra13@gmail.com");
 			st.setDate(3, new java.sql.Date(sdf.parse("13/05/1978").getTime()));
