@@ -27,13 +27,13 @@ public class Program {
 			st = conn.prepareStatement("INSERT INTO seller "
 					+ "(Name, Email, BirthDate, BaseSalary, DepartmentId) "
 					+ "VALUES "
-					+ "(?, ?, ?, ?, ?)"
-					+ Statement.RETURN_GENERATED_KEYS);
-			st.setString(1, "Nelivaldo Lyra");
-			st.setString(2, "nmlyra13@gmail.com");
-			st.setDate(3, new java.sql.Date(sdf.parse("13/05/1978").getTime()));
-			st.setDouble(4,  9000.0);
-			st.setInt(5, 4);
+					+ "(?, ?, ?, ?, ?)",
+					Statement.RETURN_GENERATED_KEYS);
+			st.setString(1, "Carmelita Alves");
+			st.setString(2, "carmem1805@gmail.com");
+			st.setDate(3, new java.sql.Date(sdf.parse("07/07/1979").getTime()));
+			st.setDouble(4,  7000.0);
+			st.setInt(5, 3);
 			
 			int rowsAffected = st.executeUpdate();
 			// System.out.println("Done! Rows affected: " + rowsAffected);
@@ -41,6 +41,10 @@ public class Program {
 			if (rowsAffected > 0) {
 				 ResultSet rs = st.getGeneratedKeys();
 				 // Warning: The st.getGeneratedKeys() function returns a resultSet.
+				 while (rs.next()) {
+					 int id = rs.getInt(1); // returns the value of the first column.
+					 System.out.println("Done! Id = " + id);
+				 }
 
 			} else {
 				 System.out.println("No rown affected!");
