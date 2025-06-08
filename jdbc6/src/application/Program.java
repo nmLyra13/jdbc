@@ -1,8 +1,8 @@
 package application;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import db.DB;
 
@@ -11,20 +11,20 @@ public class Program {
 	public static void main(String[] args) {
 
 		Connection conn = null;
-		PreparedStatement st = null;
+		Statement st = null;
 
 		try {
 			conn = DB.getConnection();
-			st = conn.prepareStatement(
-					"DELETE FROM department "
-					+ "WHERE "
-					+ "Id = ?");
+			st = conn.createStatement();
+			int rows1 = st.executeUpdate("UPDATE seller SET BaseSAlary = 4090 " 
+			+ "WHERE DepartmentId = 3");
+			int rows2 = st.executeUpdate("UPDATE seller SET BaseSAlary = 5090 " 
+			+ "WHERE DepartmentId = 4");
 			
-			st.setInt(1, 8);
-					
-			int rowsAffected = st.executeUpdate();
+			System.out.println("rows1" + rows1);
+			System.out.println("rows2" + rows2);
+			
 
-			System.out.println("Done! Rows Affected: " + rowsAffected);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
