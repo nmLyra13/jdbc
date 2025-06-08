@@ -3,10 +3,11 @@ package application;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import db.DB;
 
-public class Program {
+public class Program2 {
 
 	public static void main(String[] args) {
 
@@ -16,11 +17,8 @@ public class Program {
 		try {
 			conn = DB.getConnection();
 			st = conn.prepareStatement(
-					"DELETE FROM department "
-					+ "WHERE "
-					+ "Id = ?");
-			
-			st.setInt(1, 8);
+					"insert into department (Name) values ('D1'), ('D2')",
+					Statement.RETURN_GENERATED_KEYS);
 					
 			int rowsAffected = st.executeUpdate();
 
